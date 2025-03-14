@@ -13,7 +13,10 @@ function App() {
   return (
     <div className={'app'}>
         {cardList.map((card) =>
-            <div key={'id'} className={'card'}>
+            <div
+                key={card.id}
+                draggable={true}
+                className={'card'}>
                 {card.text}
             </div>
         )}
