@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import './App.css'
 
 type CardType = {
@@ -60,6 +60,17 @@ function App() {
             return -1
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem('cardList', JSON.stringify(cardList))
+    }, [cardList])
+
+    useEffect(() => {
+        const saved = localStorage.getItem('cardList')
+        if (saved) {
+            setCardList(JSON.parse(saved))
+        }
+    }, [])
 
 
     return (
