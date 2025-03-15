@@ -31,8 +31,7 @@ function App() {
 
     function DragOverHandler(e: React.DragEvent<HTMLDivElement>) {
         e.preventDefault()
-        const target = e.target as HTMLDivElement
-        target.style.background = 'lightgray'
+        e.currentTarget.style.background = 'lightgray'
     }
 
     function DropHandler(e: React.DragEvent<HTMLDivElement>, card: CardType) {
