@@ -73,7 +73,7 @@ function App() {
                     onDrop={(e) => DropHandler(e, card)}
                     key={card.id}
                     draggable={true}
-                    className={'card'}>
+                    className={`card ${currentCard?.id === card.id ? 'active' : ''}`}>
                     {card.text}
                 </div>
             )}
