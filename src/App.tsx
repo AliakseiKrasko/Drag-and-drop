@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { DraggableCard } from './components/DraggableCard.tsx'
 import { CardType } from './types'
+import img1 from './assets/1.png'
+import img2 from './assets/2.png'
+import img3 from './assets/3.png'
+import img4 from './assets/4.png'
 
 function App() {
     const [cardList, setCardList] = useState<CardType[]>([
-        { id: 1, order: 3, text: 'Карточка 3' },
-        { id: 2, order: 1, text: 'Карточка 1' },
-        { id: 3, order: 2, text: 'Карточка 2' },
-        { id: 4, order: 4, text: 'Карточка 4' }
+        { id: 1, order: 3, image: img1 },
+        { id: 2, order: 1, image: img2 },
+        { id: 3, order: 2, image: img3 },
+        { id: 4, order: 4, image: img4 }
     ])
 
     const [currentCard, setCurrentCard] = useState<CardType | null>(null)
@@ -19,15 +23,20 @@ function App() {
 
     const DragEndHandler = (e: React.DragEvent<HTMLDivElement>) => {
         e.currentTarget.style.background = 'white'
+        e.currentTarget.style.boxShadow = 'none'
+        e.currentTarget.style.scale = '1'
     }
 
     const DragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
-        e.currentTarget.style.background = 'lightgray'
+        e.currentTarget.style.background = 'blue'
+        e.currentTarget.style.boxShadow = '0 8px 10px rgba(0, 5, 5, 0.2)'
+        e.currentTarget.style.scale = '0.95'
     }
 
     const DropHandler = (e: React.DragEvent<HTMLDivElement>, card: CardType) => {
         e.preventDefault()
+        e.currentTarget.style.scale = '1'
         if (!currentCard) return
 
         setCardList(cardList.map(c => {

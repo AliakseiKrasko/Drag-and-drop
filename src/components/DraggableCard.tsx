@@ -29,6 +29,9 @@ export const DraggableCard: React.FC<Props> = ({
             onDragOver={onDragOver}
             onDrop={(e) => onDrop(e, card)}
         >
+            {card.image && (
+                <img src={card.image} alt={card.text} className="card-image" />
+            )}
             {card.text}
         </div>
     )
